@@ -2,6 +2,7 @@ class BooksController < ApplicationController
   
   def index
      @book = Book.new
+     #@books = Book.all.order(created_at: 'desc') #追記rspec.error
      @books = Book.all
   end
   
@@ -36,9 +37,10 @@ class BooksController < ApplicationController
   end
 
   def destroy
+    #@books = Book.all.order(created_at: 'desc') #追記rspec.error
     @book = Book.find(params[:id])
     @book.destroy
-    redirect_to books_path(@book)
+    redirect_to books_path
   end
   
   def book_params
